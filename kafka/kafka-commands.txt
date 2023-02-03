@@ -1,0 +1,13 @@
+export PATH=$PATH:/usr/hdp/current/kafka-broker/bin
+
+#Create the topic
+kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic uday-test
+
+#Check if created
+kafka-topics.sh  --list --bootstrap-server localhost:9092
+
+# find the ip address of any broker from zookeeper-client using command get /brokers/id/0
+
+kafka-console-producer.sh --broker-list localhost:9092 --topic uday-test
+
+kafka-console-consumer.sh --zookeeper localhost:9092 --topic uday-test --from-beginning
